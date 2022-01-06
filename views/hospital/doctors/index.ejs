@@ -1,0 +1,52 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>MÉDICOS</h2>
+    <a class="btn btn-success" href="/hospital/doctors/new">Cadastrar um novo médico</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead> 
+
+            <tr>
+                <th>CRM</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% doctors.forEach(doctor => { %>
+                <tr>
+                    <th><%= doctor.crm %></th>
+                    <th><%= doctor.nome %></th>
+                    <th><%= doctor.email %></th>
+                <th>
+
+                    <a class="btn btn-warning" href="/hospital/doctors/edit/<%= doctor.crm %>">Editar</a>
+                    <form method="POST" action="/doctors/delete" style="display: inline;"onsubmit="confirmarDelecao(event, this)">
+                        <input type="hidden" name="crm" value="<%= doctor.crm %>">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+               </th>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar este médico?");
+        if(decision){
+            form.submit();
+        }
+    }
+    
+</script>
+
+<%- include ('../../partials/footer.ejs') %>
+

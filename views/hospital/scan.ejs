@@ -1,0 +1,50 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbarHospital.ejs') %>
+
+<body>
+   
+<br>
+<div class="container">
+            <div class="card">
+
+                <div class="card-header">
+                    <center><h2>QRcode do <%=patient.nome%></h2></center>
+                    <center><h2>Número de internação: <%=patient.internacao%></h2></center>
+                   
+                </div>
+              
+                <div class="row align-items-center">
+                    <div class="col">
+                   
+                    </div>
+                    <div class="col">
+                       
+                            <form method="POST" action="/scan/pdf" >
+                                <center> <img class="img-fluid" src=<%=qr_code %> alt="QR Code" >
+                                    <br></center>
+                                    <input type="hidden" name="nome" value="<%=patient.nome%>">
+                                    <input type="hidden" name="internacao" value="<%=patient.internacao%>">
+                                    <input type="hidden" name="qrcode" value=<%=qr_code %>>
+                                <button class="btn btn-danger" onclick="funcao1()">PDF</button>
+                            </form>
+                    
+                    </div>
+                    <div class="col">
+                  
+                    </div>
+                </div>
+            </div>
+    </div>  
+</body>
+
+</html>
+<script>
+
+    function funcao1()
+    {
+    //alert("PDF criado!");
+    swal("PDF criado!", "Entre na área de trabalho para encontrá-lo", "success");
+   
+    }
+    
+</script>

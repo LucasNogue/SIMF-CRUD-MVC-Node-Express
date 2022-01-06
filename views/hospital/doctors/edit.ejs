@@ -1,0 +1,27 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card"> 
+        <div class="card-header">
+            <h2>Editar médicos</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/doctors/update">
+                <label for=""><b>CRM</b></label>
+                <input class="form-control" type="number" name="crm" placeholder="CRM do médico"  value="<%=doctor.crm%>"><br>
+                <label for=""><b>NOME</b></label>
+                <input class="form-control" type="text" name="nome" placeholder="Nome do médico"  value="<%=doctor.nome%>"><br>
+                <label for=""><b>EMAIL</b></label>
+                <input class="form-control" type="email" name="email" placeholder="Email" value="<%=doctor.email%>"><br>
+                <label for=""><b>SENHA</b></label>
+                <input class="form-control" type="password" name="senha" placeholder="Senha"><br>
+                <input type="hidden" name="crm" value="<%= doctor.crm %>">
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>

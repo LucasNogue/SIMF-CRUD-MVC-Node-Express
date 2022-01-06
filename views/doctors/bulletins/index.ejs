@@ -1,0 +1,29 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarUsuarios.ejs') %>
+<body>
+    
+    <div class="container">
+        <hr>
+        <h2> SEUS PACIENTES </h2>
+        <hr>
+        
+        <% patients.forEach(patient => { %>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Nome: <%= patient.nome %></h3>
+                    <hr>
+                    <h3>Quarto:<%= patient.quarto %></h3>
+                    <hr>
+                    <h3>Leito: <%= patient.leito %></h3>
+                </div>
+                <div class="card-footer">
+                   <a href="bulletins/<%=patient.internacao%>"> <button class="btn btn-primary">BOLETIM</button></a>
+                </div> 
+            </div>
+            <%})%>
+    </div>
+    
+</body>
+<%- include ('../../partials/footer.ejs') %>
+</html>

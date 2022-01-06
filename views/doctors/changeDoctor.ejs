@@ -1,0 +1,23 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card"> 
+       
+        <div class="card-header">
+            
+            <h2>Digite sua nova senha referente ao email: <%=dadosDoctor.email%></h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/doctors/changeDoctor/update">  
+                    <label for=""><b>SENHA:</b></label>
+                    <input class="form-control" type="password" name="senha" placeholder="Senha"><br>
+                    <input type="hidden" name="crm" value="<%= dadosDoctor.crm %>">
+                    <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

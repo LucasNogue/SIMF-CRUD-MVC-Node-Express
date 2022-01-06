@@ -1,0 +1,38 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card"> 
+        <div class="card-header">
+            <h2>Cadastro de pacientes</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/patients/save">
+                <label for=""><b>NOME</b></label>
+                <input class="form-control" type="text" name="nome" placeholder="Nome do paciente"><br>
+                <label for=""><b>NASCIMENTO</b></label> 
+                <input class="form-control" type="date" name="nascimento" placeholder="Data de nascimento"><br>
+                <label for=""><b>NÚMERO DE INTERNAÇÃO</b></label> 
+                <input class="form-control" type="number" name="internacao" placeholder="Número de internação"><br>
+                <label for=""><b>QUARTO</b></label> 
+                <input class="form-control" type="number" name="quarto" placeholder="Quarto onde o paciente foi internado"><br>
+                <label for=""><b>LEITO</b></label> 
+                <input class="form-control" type="number" name="leito" placeholder="Leito do paciente"><br>
+                <label for=""><b>EMAIL</b></label> 
+                <input class="form-control" type="email" name="email" placeholder="Email"><br>
+                <label for=""><b>SENHA</b></label> 
+                <input class="form-control" type="password" name="senha" placeholder="Senha"><br>
+                <!--<label for=""><b>CRM DO MÉDICO</b></label>-->   
+                <input class="form-control" type="hidden" value="789" name="crm" placeholder="CRM"><br>
+                <label for=""><b>DATA DE CADASTRO</b></label> 
+                <input class="form-control" type="date" name="data" placeholder="data (mudar)"><br>
+                <button class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    <br><br>
+</div>
+
+
+<%- include ('../../partials/footer.ejs') %>

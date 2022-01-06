@@ -1,0 +1,39 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card"> 
+        <div class="card-header">
+            <h2>Edição de pacientes</h2>
+        </div>
+       
+        <div class="card-body">
+            <form method="POST" action="/patients/update">
+                <label for=""><b>NOME</b></label>
+                <input class="form-control" type="text" name="nome" placeholder="Nome do paciente" value="<%=patient.nome%>"><br>
+                <label for=""><b>NASCIMENTO</b></label> 
+                <input class="form-control" type="date" name="nascimento" placeholder="Data de nascimento" value="<%=patient.nascimento%>"><br>
+                <label for=""><b>NÚMERO DE INTERNAÇÃO</b></label> 
+                <input class="form-control" type="number" name="internacao" placeholder="Número de internação" value="<%=patient.internacao%>"><br>
+                <label for=""><b>QUARTO</b></label> 
+                <input class="form-control" type="number" name="quarto" placeholder="Quarto onde o paciente foi internado"value="<%=patient.quarto%>"><br>
+                <label for=""><b>LEITO</b></label> 
+                <input class="form-control" type="number" name="leito" placeholder="Leito do paciente"value="<%=patient.leito%>"><br>
+                <label for=""><b>EMAIL</b></label> 
+                <input class="form-control" type="email" name="email" placeholder="Email"value="<%=patient.email%>"><br>
+                <label for=""><b>SENHA</b></label> 
+                <input class="form-control" type="password" name="senha" placeholder="Senha"value="<%=patient.senha%>"><br>
+                <label for=""><b>CRM DO MÉDICO</b></label> 
+                <input class="form-control" type="number" name="crm" placeholder="CRM" value="<%=patient.crm%>"><br>
+                <label for=""><b>DATA DE CADASTRO</b></label> 
+                <input class="form-control" type="date" name="data" placeholder="data (mudar)"><br>
+                <input type="hidden" name="internacao" value="<%= patient.internacao %>">
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include ('../../partials/footer.ejs') %>

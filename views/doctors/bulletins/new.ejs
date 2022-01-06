@@ -1,0 +1,70 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarUsuarios.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card"> 
+        <div class="card-header">
+            <h2>NOVO BOLETIM - <%= internacao.nome %> </h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/bulletins/save">
+              <h4>Insira a data do boletim</h4>
+                <input class="form-control" type="date" name="data" placeholder="Defina data"><br>
+                 <h4>Insira as informações do paciente</h4>
+                <textarea class="form-control" placeholder="Escreva o boletim aqui!" name="body" id="bulletin"></textarea><br>
+               
+                <input type="hidden" name="patientInternacao" value="<%= internacao.internacao %>">
+                <br>
+                <button class="btn btn-success" onclick="funcao1()" >ENVIAR</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+function preparar() {
+  var prep = document.getElementById("preparo").value;
+  var paragrafo  = document.getElementById("paragrafo").innerHTML;
+  paragrafo = paragrafo +prep;
+  
+  document.getElementById("paragrafo").innerHTML = paragrafo;
+}
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#bulletin",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ],
+        toolbar: 'basicDateButton selectiveDateButton toggleDateButton splitDateButton menuDateButton',
+  setup: function (editor) {
+
+ 
+    var toDateHtml = function (date) {
+      return '<p>' +"texto padrão" + '<br> </p>';
+    };
+ 
+    /* Basic button that just inserts the date */
+/*    editor.ui.registry.addButton('basicDateButton', {
+      text: 'Texto padrão',
+      tooltip: 'Texto padrão para acelerar o processo',
+      onAction: function (_) {
+        editor.insertContent(toDateHtml(new String()));
+      }
+    });*/
+
+  },
+  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    })
+
+
+    function funcao1()
+    {
+    //alert("PDF criado!");
+    swal("Boletim enviado!", "A familía recebeu as informações", "success");
+    
+    }
+</script>

@@ -1,0 +1,61 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbarHospital.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>PACIENTES</h2>
+    <a class="btn btn-success" href="/hospital/patients/new">Cadastrar um novo paciente</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Número de internação</th>
+                <th>Nome</th>
+               <th>Nascimento</th>
+                <th>Quarto</th>
+                <th>Leito</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% patients.forEach(patient => { %>
+                <tr>
+                    <th><%= patient.internacao %></th>
+                    <th><%= patient.nome %></th>
+                    <th><%= patient.nascimento %></th>
+                    <th><%= patient.quarto %></th>
+                    <th><%= patient.leito %></th>
+                    <th><%= patient.email %></th>
+                    
+                <th>
+
+                    <a class="btn btn-warning" href="/hospital/patients/edit/<%= patient.internacao %>">Editar</a>
+                    <form method="POST" action="/patients/delete" style="display: inline;"onsubmit="confirmarDelecao(event, this)">
+                        <input type="hidden" name="internacao" value="<%= patient.internacao %>">
+                        
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                    <form action="/scan" method="POST" class="form" style="display: inline;">
+                        <input type="hidden" name="internacao" id="internacao" value="<%= patient.internacao %>">
+                        <input type="hidden" name="text" id="text"  value="http://191.17.104.23:7000/doctors/bulletins/<%= patient.internacao %>"  ></input>
+                        <button type="submit" class="btn btn-primary">QR Code</button>
+                    </form>
+               </th>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar este paciente?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>
